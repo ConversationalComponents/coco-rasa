@@ -41,32 +41,32 @@ slots:
     type: text
 ```
 
-#### triggering actions (and CoCo actions :) )
-1. MappingPolicy
+#### triggering actions (and CoCo actions)
+* MappingPolicy
 
-    config.yml:
-    ```yaml
-    policies:
+``` yaml
+# config.yml:
+policies:
     - name: MappingPolicy
-    ```
+```
 
-    domain.yml
-    ```yaml
-    intents:
+```yaml
+# domain.yml
+intents:
     - greet:
         triggers: namer_vp3
     - someotherintent
-    ```
-2. Fallback policy
-    
-    config.yaml
-    ```yaml
-        policies:
-            - name: "FallbackPolicy"
-                nlu_threshold: 0.4
-                core_threshold: 0.3
-                fallback_action_name: "generic_oneliners_vp3"
-    ```
+```
+* Fallback policy
+
+``` yaml
+# config.yaml
+policies:
+    - name: "FallbackPolicy"
+        nlu_threshold: 0.4
+        core_threshold: 0.3
+        fallback_action_name: "generic_oneliners_vp3"
+```
 
 #### using context transfer
 in domain.yml declare the keys you want the use(from CoCo context transfer protocol). data will be transferred automatically between components.
