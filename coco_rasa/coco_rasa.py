@@ -26,11 +26,12 @@ logger = logging.getLogger(__name__)
 
 
 class CoCoContextPolicy(Policy):
-    """Policy which maps intents directly to actions.
+    """
+    Maintains CoCo multi-turn session by keeping active action mapped
+    to custom CoCo action while the Form set by CoCo to maintain the session
+    is active.
+    """
 
-    Intents can be assigned components in the domain file which are to be
-    executed whenever the intent is detected. This policy takes precedence over
-    any other policy."""
     def train(
         self,
         training_trackers: List[DialogueStateTracker],
