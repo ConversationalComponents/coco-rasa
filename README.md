@@ -27,18 +27,11 @@ actions:
     - namer_vp3
 ```
 
-#### These are the setup steps to get multi-turn capabilities for CoCo actions
+#### to enable multi-turn capabilities for CoCo actions
 in your rasa bot config.yml
 ```yaml
 policy:
   - name: "coco_rasa.CoCoContextPolicy"
-```
-
-in domain.yml
-```yaml
-slots:
-  active_component:
-    type: text
 ```
 
 #### triggering actions (and CoCo actions)
