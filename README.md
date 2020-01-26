@@ -31,7 +31,7 @@ actions:
 in your rasa bot config.yml
 ```yaml
 policy:
-  - name: "coco_rasa.CoCoMappingPolicy"
+  - name: "coco_rasa.CoCoContextPolicy"
 ```
 
 in domain.yml

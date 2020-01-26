@@ -1,5 +1,5 @@
 
 from .coco_rasa import (
-    CoCoMappingPolicy,
+    CoCoContextPolicy,
     GenericCoCoAction
 )
