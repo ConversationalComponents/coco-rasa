@@ -14,6 +14,8 @@ from rasa.core.events import ActionExecuted
 from rasa.core.policies.policy import Policy
 from rasa.core.trackers import DialogueStateTracker
 
+from rasa.core.constants import FORM_POLICY_PRIORITY
+
 from rasa_sdk import Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk import Action
@@ -31,6 +33,17 @@ class CoCoContextPolicy(Policy):
     to custom CoCo action while the Form set by CoCo to maintain the session
     is active.
     """
+
+    def __init__(
+        self,
+        priority: int = FORM_POLICY_PRIORITY,
+    ) -> None:
+
+        # max history is set to 2 in order to capture
+        # previous meaningful action before action listen
+        super().__init__(
+            priority=priority
+        )
 
     def train(
         self,
