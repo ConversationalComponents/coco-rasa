@@ -19,7 +19,7 @@ from rasa.core.constants import FORM_POLICY_PRIORITY
 from rasa_sdk import Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk import Action
-from rasa_sdk.events import SlotSet, Form
+from rasa_sdk.events import SlotSet, Form, FollowupAction
 
 import coco
 
@@ -158,7 +158,11 @@ def coco_run(component_name, dispatcher: CollectingDispatcher, tracker: Tracker,
         SlotSet(context_key, context_value) 
         for context_key, context_value in coco_resp.updated_context.items()]
     dispatcher.utter_message(coco_resp.response)
-    active_component = component_name if not coco_resp.component_done else None
+    if not coco_resp.component_done:
+        active_component = component_name
+    else:
+        active_component = None
+        returned_slots.append(FollowupAction("action_listen"))
     return [Form(active_component)] + returned_slots
 
 

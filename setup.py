@@ -10,7 +10,7 @@ def read(fname):
 long_description = read("README.md")
 
 setup(name='coco-rasa',
-      version='0.0.2',
+      version='0.0.3',
       description='CoCo(Conversational Components) SDK for using components in Rasa',
       long_description=long_description,
       long_description_content_type='text/markdown',
